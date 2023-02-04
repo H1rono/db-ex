@@ -1,8 +1,8 @@
-FROM rust:1.66-buster
+FROM rust:1.67-buster
 
 WORKDIR /dbexample-rs
 COPY . .
 
-RUN cargo install --path .
+RUN cargo build
 
-CMD [ "dbexample-rs" ]
+CMD [ "cargo", "run" ]
