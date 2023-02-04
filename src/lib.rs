@@ -25,7 +25,7 @@ pub async fn create_user(pool: &sqlx::MySqlPool, name: &str) -> Result<User> {
         .bind(name)
         .execute(pool)
         .await
-        .with_context(|| format!("Failed to INSERT a new user with name='{name}"))?;
+        .with_context(|| format!("Failed to INSERT a new user with name='{name}'"))?;
     let user = User {
         id: res.last_insert_id() as u32,
         name: String::from(name),
@@ -52,6 +52,6 @@ pub async fn delete_user(pool: &sqlx::MySqlPool, id: u32) -> Result<()> {
         .bind(id)
         .execute(pool)
         .await
-        .with_context(|| format!("Failed to DELETE user WHERE id={id}"))?;
+        .with_context(|| format!("Failed to DELETE user WHERE id='{id}'"))?;
     Ok(())
 }
