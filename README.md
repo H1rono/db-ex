@@ -2,12 +2,9 @@
 
 mysql and rust in docker
 
-## MySQL
+## Usage
 
-- start server: `docker compose up -d`
-
-## Rust
-
-- using outside docker
-    - load env: `export DATABASE_URL=mysql://root:root@localhost:3306/sample`
-    - run: `cargo run`
+- Run main.rs: `docker compose up -d`
+- Run tests: `docker compose -f docker-compose.test.yml up -d`
+- Run main.rs in host machine: `DATABASE_URL=mysql://root:root@localhost:3306/sample cargo run`
+    - Before execute this command, MySQL is required to be serving
